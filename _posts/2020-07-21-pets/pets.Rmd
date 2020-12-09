@@ -1,0 +1,77 @@
+---
+title: "Pets"
+description: |
+  A short description of the post.
+author:
+  - name: Andrew Stewart
+    url: https://www.andrewcstewart.com
+date: 07-21-2020
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+library(tidyverse)
+library(tidytuesdayR)
+library(ggplot2)
+library(ggforce)
+tt <- tt_load("2020-07-21")
+
+```
+
+```{r Wrangle}
+
+tt$animal_outcomes %>%
+  pivot_longer(cols = ACT:WA,
+               names_to = "territory",
+               values_to = "count") ->
+  df1
+
+```
+
+
+```{r fig.height=14, fig.width=10}
+df1 %>%
+  ggplot(aes(x=year, y = count, color=animal_type)) +
+  geom_point(alpha = 7/10)  +
+  geom_line(alpha = 7/10)  +
+  scale_y_log10() +
+  facet_wrap(territory ~ outcome) +
+  # facet_col(~outcome) +
+  # facet_zoom(ylim = c(2000,3000)) +
+  theme(axis.text.x = element_text(angle = 90)) +
+  # theme(legend.position="top", legend.box = "horizontal") +
+  labs(color = "Animal Type") -> p2
+  # ggtitle("Animal Outcomes") -> p2
+
+
+# Inspired by https://github.com/Khanzi/tidy-tuesdays/blob/master/2020-07-21/initial_exploration.r
+library(patchwork)
+patch <- (p2) + # Defining pathwork layout
+  
+  plot_layout(guides = 'collect') + # Collecting guides on the right side
+  
+  # Annotations
+  plot_annotation(
+    title = "Animal Outcomes in Australia",
+    caption = "@andrewcstewart on #TidyTuesday. Data from RSPCA Australia") &
+  
+  # Small theme tweaks
+  theme(plot.title = element_text(size = 30, hjust=0.5), # Centering title and changing size
+        legend.position="top", legend.box = "horizontal",
+
+        panel.grid = element_line(color = 'white'), # Hiding gridlines
+        text = element_text(family = 'Avenir Book')) # Changing font  
+  
+patch  
+```
+
+Distill is a publication format for scientific and technical writing, native to the web.
+
+Learn more about using Distill at <https://rstudio.github.io/distill>.
+
+

@@ -1,0 +1,70 @@
+[
+  {
+    "path": "posts/welcome/",
+    "title": "Welcome to #TidyTuesdays",
+    "description": "Welcome to our new blog, #TidyTuesdays. We hope you enjoy \nreading what we have to say!",
+    "author": [
+      {
+        "name": "Andrew Stewart",
+        "url": "https://www.andrewcstewart.com"
+      }
+    ],
+    "date": "2020-12-08",
+    "categories": [],
+    "contents": "\n\n\n\n",
+    "preview": {},
+    "last_modified": "2020-12-08T17:43:51-08:00",
+    "input_file": "welcome.utf8.md"
+  },
+  {
+    "path": "posts/2020-09-15-kids/",
+    "title": "Kids",
+    "description": "A short description of the post.",
+    "author": [
+      {
+        "name": "Andrew Stewart",
+        "url": "https://example.com/norajones"
+      }
+    ],
+    "date": "2020-09-15",
+    "categories": [],
+    "contents": "\n\n\n\nDistill is a publication format for scientific and technical writing, native to the web.\nLearn more about using Distill at https://rstudio.github.io/distill.\n\n\n\n",
+    "preview": "posts/2020-09-15-kids/kids_files/figure-html5/unnamed-chunk-1-1.png",
+    "last_modified": "2020-12-08T17:44:25-08:00",
+    "input_file": "kids.utf8.md"
+  },
+  {
+    "path": "posts/2020-09-08-friends/",
+    "title": "Friends",
+    "description": "A short description of the post.",
+    "author": [
+      {
+        "name": "Andrew Stewart",
+        "url": "https://www.andrewcstewart.com"
+      }
+    ],
+    "date": "2020-09-08",
+    "categories": [],
+    "contents": "\nWrangle\nExplore the data and process it into a nice format for plotting! Access each dataset by name by using a dollarsign after the tt object and then the name of the data set.\n\n\n\nVisualize\nUsing your processed dataset, create your unique visualization.\n\n\n\nDistill is a publication format for scientific and technical writing, native to the web.\nLearn more about using Distill at https://rstudio.github.io/distill.\n\n\n\n",
+    "preview": "posts/2020-09-08-friends/friends_files/figure-html5/unnamed-chunk-1-1.png",
+    "last_modified": "2020-12-08T17:54:23-08:00",
+    "input_file": "friends.utf8.md"
+  },
+  {
+    "path": "posts/2020-07-21-pets/",
+    "title": "Pets",
+    "description": "A short description of the post.",
+    "author": [
+      {
+        "name": "Andrew Stewart",
+        "url": "https://www.andrewcstewart.com"
+      }
+    ],
+    "date": "2020-07-21",
+    "categories": [],
+    "contents": "\n\n\n\n\n\n\nDistill is a publication format for scientific and technical writing, native to the web.\nLearn more about using Distill at https://rstudio.github.io/distill.\n\n\n\n",
+    "preview": "posts/2020-07-21-pets/pets_files/figure-html5/unnamed-chunk-1-1.png",
+    "last_modified": "2020-12-08T18:05:26-08:00",
+    "input_file": "pets.utf8.md"
+  }
+]

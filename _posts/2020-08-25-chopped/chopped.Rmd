@@ -1,0 +1,94 @@
+---
+title: "Chopped"
+description: |
+  A short description of the post.
+author:
+  - name: Andrew Stewart
+    url: https://www.andrewcstewart.com
+date: 08-25-2020
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+# Packages
+library(tidytuesdayR)
+library(tidyverse)
+library(janitor)
+library(here)
+library(ggplot2)
+library(patchwork)
+library(ggpubr)
+
+# theme_set(theme_minimal())
+
+# First update the tidyduesdayR master file
+tidytuesdayR:::tt_update_master_file(force=TRUE)
+
+tt <- tt_load("2020-08-25")
+
+print(rmarkdown::metadata$date)
+
+print(rmarkdown::metadata$author)
+
+```
+
+# Wrangle
+
+Explore the data and process it into a nice format for plotting! Access each dataset by name by using a dollarsign after the `tt` object and then the name of the data set.
+
+```{r Wrangle}
+
+df <- tt$chopped %>%
+  pivot_longer(cols = starts_with("judge"),
+               values_to = "judge") %>%
+  select(judge, everything())
+```
+
+```{r}
+ggthemr('fresh')
+p1 <- df %>%
+  group_by(judge) %>%
+  summarise(avg_rating = mean(episode_rating, na.rm = TRUE),
+            n = n()) %>%
+  ungroup() %>%
+  filter(n > 3) %>%
+  mutate(num_episodes = cut_interval(n, n = 3)) %>%
+  ggdotchart(x = "judge", y = "avg_rating",
+             color = "num_episodes",                       # Color by groups
+             palette = c("#00AFBB", "#E7B800", "#FC4E07"), # Custom color palette
+             sorting = "descending",                       # Sort value in descending order
+             # add = "segments",
+             rotate = TRUE,                                # Rotate vertically
+             dot.size = 2,                                 # Large dot size
+             y.text.col = TRUE,                            # Color y text by groups
+             title = "imdb rating",
+             ylab = FALSE,
+             xlab = FALSE,
+             ggtheme = theme_pomological("Homemade Apple", 12)                       # ggplot2 theme
+             ) +
+  xlab("Average IMDB Rating")
+  # theme_cleveland()
+p1
+```
+
+
+```{r}
+# ggthemr('fresh')
+p1 + plot_annotation(
+    title = "Chopped!",
+    subtitle = "Let's turn the tables and evaluate the judges!",
+    caption = "Created by @andrewcstewart, Data from Kaggle, #TidyTuesday",
+    theme = theme_pomological("Homemade Apple", 16)) 
+```
+
+
+Distill is a publication format for scientific and technical writing, native to the web.
+
+Learn more about using Distill at <https://rstudio.github.io/distill>.
+
+

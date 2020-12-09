@@ -1,0 +1,51 @@
+---
+title: "Kids"
+description: |
+  A short description of the post.
+author:
+  - name: Andrew Stewart
+    url: https://example.com/norajones
+date: 09-15-2020
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+# Packages
+library(tidytuesdayR)
+library(tidyverse)
+library(janitor)
+library(here)
+library(ggplot2)
+library(patchwork)
+
+theme_set(theme_minimal())
+
+# First update the tidyduesdayR master file
+tidytuesdayR:::tt_update_master_file(force=TRUE)
+
+tt <- tt_load("2020-09-15")
+
+df <- tt$kids
+```
+
+```{r fig.height=10, fig.width=8}
+ggplot(df) +
+ aes(x = state, fill = variable, weight = inf_adj_perchild) +
+ geom_bar(position = "fill") +
+ scale_fill_hue() +
+ labs(x = "State", y = "Proportion", title = "Composition of state spending on children", subtitle = "Proportion of amount spent per child, adjusted for inflation", caption = "Created by @andrewcstewart, data from Urban Institute, #TidyTuesday", fill = "Program") +
+ coord_flip() +
+ ggthemes::theme_fivethirtyeight() +
+ theme(legend.position = "bottom")
+```
+
+Distill is a publication format for scientific and technical writing, native to the web.
+
+Learn more about using Distill at <https://rstudio.github.io/distill>.
+
+

@@ -1,0 +1,104 @@
+---
+title: "Friends"
+description: |
+  A short description of the post.
+author:
+  - name: Andrew Stewart
+    url: https://www.andrewcstewart.com
+date: 09-08-2020
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+# Packages
+library(tidytuesdayR)
+library(tidyverse)
+library(janitor)
+library(here)
+library(ggplot2)
+library(patchwork)
+library(waffle)
+
+theme_set(theme_minimal())
+
+# First update the tidyduesdayR master file
+tidytuesdayR:::tt_update_master_file(force=TRUE)
+
+tt <- tt_load("2020-09-08")
+
+print(rmarkdown::metadata$date)
+```
+
+# Wrangle
+
+Explore the data and process it into a nice format for plotting! Access each dataset by name by using a dollarsign after the `tt` object and then the name of the data set.
+
+```{r Wrangle}
+# main_friends <- tt$friends %>% 
+#   tabyl(speaker) %>% 
+#   arrange(desc(n)) %>% 
+#   head(6) %>% 
+#   pull(speaker)
+# 
+# # df <- tt
+# df <- tt$friends %>%
+#   count(season, speaker) %>%
+#   filter(speaker %in% main_friends)
+```
+
+# Visualize
+
+Using your processed dataset, create your unique visualization.
+
+```{r fig.height=8, fig.width=6}
+main_friends <- tt$friends %>% 
+  tabyl(speaker) %>% 
+  arrange(desc(n)) %>% 
+  head(6) %>% 
+  pull(speaker)
+
+# df <- tt
+df <- tt$friends %>%
+  count(season, speaker) %>%
+  mutate(n = n/10) %>%
+  filter(speaker %in% main_friends)
+
+p1 <- ggplot(df, aes(fill = speaker, values = n)) +
+  geom_waffle(color = "white", size = .25, n_rows = 5, flip = TRUE) +
+  facet_wrap(~season, nrow = 1, strip.position = "bottom") +
+  scale_x_discrete() + 
+  scale_y_continuous(labels = function(x) x * 10, # make this multiplyer the same as n_rows
+                     expand = c(0,0)) +
+  ggthemes::scale_fill_tableau(name=NULL) +
+  coord_equal() +
+  labs(
+    # title = "TidyTuesday: Friends",
+    # subtitle = "Number of lines ",
+    x = "Season",
+    y = "Count (each square = 10 lines)"
+  ) +
+  theme_minimal(base_family = "Roboto Condensed" ) +
+  theme(panel.grid = element_blank(), axis.ticks.y = element_line()) +
+  # theme_ft_rc() +
+  guides(fill = guide_legend(reverse = TRUE))
+
+p1 + plot_annotation(
+  title = "Friends!",
+  subtitle = "Who had the most lines?",
+  caption = "Created by @andrewcstewart, Data from the {friends} package, #TidyTuesday",
+  # theme = theme_ft_rc()
+  ) 
+```
+
+
+
+Distill is a publication format for scientific and technical writing, native to the web.
+
+Learn more about using Distill at <https://rstudio.github.io/distill>.
+
+

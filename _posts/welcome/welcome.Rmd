@@ -1,0 +1,26 @@
+---
+title: "Welcome to #TidyTuesdays"
+description: |
+  Welcome to our new blog, #TidyTuesdays. We hope you enjoy 
+  reading what we have to say!
+author:
+  - name: Andrew Stewart 
+    url: https://www.andrewcstewart.com
+    affiliation: Spacely Sprockets
+    affiliation_url: https://example.com/spacelysprokets
+date: 12-08-2020
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+# Learn more about creating blogs with Distill at:
+# https://rstudio.github.io/distill/blog.html
+
+```
+
+
+
