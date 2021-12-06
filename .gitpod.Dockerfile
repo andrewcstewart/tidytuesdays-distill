@@ -1,9 +1,7 @@
-FROM rocker/tidyverse:latest
+FROM rocker/verse:3.5.2
 RUN R -e 'install.packages("remotes")'
-RUN R -e 'remotes::install_github("r-lib/remotes", ref = "6c8fdaa")'
-RUN R -e 'remotes::install_cran("attempt")'
-RUN R -e 'remotes::install_cran("remotes")'
 RUN R -e 'remotes::install_cran("dockerfiler")'
 RUN R -e 'remotes::install_cran("devtools")'
+# ENV R_LIBS_USER=/home/gitpod/libs
+# ENV "PASSWORD"="password"
 EXPOSE 8787
-ENV "PASSWORD"="password"
