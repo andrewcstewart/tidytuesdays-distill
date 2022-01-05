@@ -8,6 +8,8 @@ EXPOSE 8787
 
 USER gitpod
 
-RUN echo "R_LIBS_USER=/home/gitpod/libs" >> /home/gitpod/.Renviron
+# RUN echo "R_LIBS_USER=/home/gitpod/libs" >> /home/gitpod/.Renviron
 ENV R_LIBS_USER=/home/gitpod/libs
 COPY .Rprofile ~/.Rprofile
+
+USER root
