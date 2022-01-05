@@ -5,3 +5,9 @@ RUN R -e 'remotes::install_cran("devtools")'
 # ENV R_LIBS_USER=/home/gitpod/libs
 # ENV "PASSWORD"="password"
 EXPOSE 8787
+
+USER gitpod
+
+RUN echo "R_LIBS_USER=/home/gitpod/libs" >> /home/gitpod/.Renviron
+ENV R_LIBS_USER=/home/gitpod/libs
+COPY .Rprofile ~/.Rprofile
