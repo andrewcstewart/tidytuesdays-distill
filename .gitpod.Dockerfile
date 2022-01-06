@@ -10,6 +10,6 @@ USER gitpod
 
 # RUN echo "R_LIBS_USER=/home/gitpod/libs" >> /home/gitpod/.Renviron
 ENV R_LIBS_USER=/home/gitpod/libs
-COPY .Rprofile ~/.Rprofile
+COPY .Rprofile /home/gitpod/.Rprofile
 
 USER root
