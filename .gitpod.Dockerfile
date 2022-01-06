@@ -10,8 +10,8 @@ EXPOSE 8787
 
 # RUN echo "R_LIBS_USER=/home/gitpod/libs" >> /home/gitpod/.Renviron
 ENV R_LIBS_USER=/home/gitpod/libs
-ENV R_PROFILE=/workspace/tidytuesdays-distill/.Rprofile
+# ENV R_PROFILE=/workspace/tidytuesdays-distill/.Rprofile
 
-# COPY .Rprofile /home/gitpod/.Rprofile
+COPY .Rprofile /etc/R/Rprofile.site
 
 # USER root
