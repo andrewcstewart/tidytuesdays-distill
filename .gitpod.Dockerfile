@@ -12,7 +12,7 @@ EXPOSE 8787
 ENV R_LIBS_USER=/home/gitpod/libs
 # ENV R_PROFILE=/workspace/tidytuesdays-distill/.Rprofile
 
-COPY .Rprofile /etc/R/Rprofile.site
+COPY .Rprofile /usr/local/lib/R/etc/Rprofile.site 
 COPY .Rprofile /home/rstudio/.Rprofile
 
 # USER root
