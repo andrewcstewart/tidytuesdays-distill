@@ -12,7 +12,4 @@ tasks:
     env:
       R_LIBS_USER: /home/gitpod/libs
     before: cp /workspace/tidytuesdays-distill/.Rprofile /home/gitpod/.Rprofile
-    # init: |
-      # echo "R_LIBS_USER=/home/gitpod/libs" >> /home/gitpod/.Renviron
-      # cp /workspace/tidytuesdays-distill/.Rprofile ~/.Rprofile
     command: /usr/lib/rstudio-server/bin/rstudio-server start
