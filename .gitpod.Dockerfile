@@ -14,6 +14,6 @@ ENV R_LIBS_USER=/home/gitpod/libs
 
 COPY .Rprofile /usr/local/lib/R/etc/Rprofile.site 
 COPY .Rprofile /home/rstudio/.Rprofile
-COPY .Rprofile /home/gitpod/.Rprofile
+# COPY .Rprofile /home/gitpod/.Rprofile
 
 # USER root
