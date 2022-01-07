@@ -9,6 +9,7 @@ ports:
     onOpen: ignore
 tasks:
   - name: setup
+    before: cp .Rprofile /home/gitpod/
     env:
       R_LIBS_USER: /home/gitpod/libs
       R_PROFILE: /workspace/tidytuesdays-distill/.Rprofile
