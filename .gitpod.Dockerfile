@@ -20,4 +20,7 @@ COPY .Rprofile /usr/local/lib/R/etc/Rprofile.site
 COPY .Rprofile /home/rstudio/.Rprofile
 # COPY .Rprofile /home/gitpod/.Rprofile
 
+COPY database.conf /etc/rstudio/database.conf
+
+
 # USER root
