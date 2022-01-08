@@ -4,6 +4,8 @@ FROM $BASE_CONTAINER
 RUN R -e 'install.packages("remotes")'
 RUN R -e 'remotes::install_cran("dockerfiler")'
 RUN R -e 'remotes::install_cran("devtools")'
+RUN R -e 'install.packages("distill")'
+
 # ENV R_LIBS_USER=/home/gitpod/libs
 # ENV "PASSWORD"="password"
 EXPOSE 8787
