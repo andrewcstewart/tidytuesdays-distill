@@ -1,4 +1,6 @@
-FROM rocker/verse:3.5.2
+ARG BASE_CONTAINER=rocker/verse:4.0.4
+FROM $BASE_CONTAINER
+
 RUN R -e 'install.packages("remotes")'
 RUN R -e 'remotes::install_cran("dockerfiler")'
 RUN R -e 'remotes::install_cran("devtools")'
