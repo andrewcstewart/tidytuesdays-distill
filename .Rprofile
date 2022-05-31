@@ -1,3 +1,4 @@
+source("renv/activate.R")
 setwd("/workspace/tidytuesdays-distill")
 setHook("rstudio.sessionInit", function(newSession) {
   if (newSession && is.null(rstudioapi::getActiveProject()))
